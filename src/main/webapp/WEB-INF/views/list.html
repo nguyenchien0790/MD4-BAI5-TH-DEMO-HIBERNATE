@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo ThymeLeaf</title>
+</head>
+<style>
+    table {
+        width: 100%;
+    }
+</style>
+<body>
+
+<!--<h1>Hello C1220G1! We will be the developers of the future! </h1>-->
+<!--<h1 th:utext="${name}"></h1>-->
+<a href="/create">Create Customer</a>
+<table border="1">
+    <tr>
+        <th>STT</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Detail</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <tr th:each="customer:${customers}">
+        <td th:utext="${customer.getId()}"></td>
+        <td th:utext="${customer.getName()}"></td>
+        <td th:utext="${customer.getAddress()}"></td>
+
+        <td><a th:href="@{/showForm/{id}(id=${customer.getId()})}">Detail</a> </td>
+        <td><a th:href="@{/edit/{id}(id=${customer.getId()})}">Edit</a></td>
+        <td><a th:href="@{/delete/{id}(id=${customer.getId()})}">Delete</a> </td>
+    </tr>
+
+</table>
+</body>
+</html>
